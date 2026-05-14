@@ -1,0 +1,16 @@
+{
+  "name": "cracked-dev",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @cracked/web dev",
+    "dev:api": "pnpm --filter @cracked/api dev",
+    "db:migrate": "pnpm --filter @cracked/api db:migrate",
+    "db:seed": "pnpm --filter @cracked/api db:seed",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
