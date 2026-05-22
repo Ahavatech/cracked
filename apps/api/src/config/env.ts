@@ -11,6 +11,7 @@ export type RuntimeEnv = {
   smtpPass?: string
   webUrl: string
   cookieDomain?: string
+  cookieSameSite: 'strict' | 'lax' | 'none'
   port: number
   nodeEnv: string
 }
@@ -34,6 +35,11 @@ function missingEnvMessage(required: string[]) {
 
 export function loadEnv(required: string[]): NodeJS.ProcessEnv {
   if (!fs.existsSync(envPath)) {
+    const hasProcessEnv = required.every((key) => process.env[key]?.trim())
+    if (hasProcessEnv) {
+      return process.env
+    }
+
     console.error(missingEnvMessage(required))
     process.exit(1)
   }
@@ -61,6 +67,7 @@ export function getRuntimeEnv(): RuntimeEnv {
     smtpPass: env.SMTP_PASS,
     webUrl: env.WEB_URL!,
     cookieDomain: env.COOKIE_DOMAIN,
+    cookieSameSite: env.COOKIE_SAMESITE === 'none' ? 'none' : env.COOKIE_SAMESITE === 'lax' ? 'lax' : 'strict',
     port: Number(env.PORT || 4000),
     nodeEnv: env.NODE_ENV || 'development'
   }

@@ -22,7 +22,7 @@ export function verifyAccessToken(token: string): AuthUser {
 export function cookieOptions() {
   return {
     httpOnly: true,
-    sameSite: 'strict' as const,
+    sameSite: env.cookieSameSite,
     secure: env.nodeEnv === 'production',
     domain: env.cookieDomain || undefined,
     maxAge: 8 * 60 * 60 * 1000
