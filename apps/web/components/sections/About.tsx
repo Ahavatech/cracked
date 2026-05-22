@@ -43,7 +43,7 @@ export function About() {
             </span>
           </div>
           <div className="avatar-figure" aria-hidden="true">
-            <Image src="/assets/team-avatar.png" alt="" fill className="about-avatar-image" />
+            <Image src="/assets/about-avatar-full.png" alt="" fill className="about-avatar-image" />
           </div>
           <div className="accent-square">
             <FaStar />
