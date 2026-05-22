@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FaPlay, FaStar } from 'react-icons/fa'
 import { Badge } from '../ui/Badge'
 import { MotionDiv, MotionSection } from '../ui/Motion'
@@ -42,8 +43,7 @@ export function About() {
             </span>
           </div>
           <div className="avatar-figure" aria-hidden="true">
-            <span className="avatar-head" />
-            <span className="avatar-body" />
+            <Image src="/assets/team-avatar.png" alt="" fill className="about-avatar-image" />
           </div>
           <div className="accent-square">
             <FaStar />

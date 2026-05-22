@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { SiAirbrake } from 'react-icons/si'
 import { logout } from '../../lib/auth'
 
 const links = [
@@ -27,7 +27,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <aside className="admin-sidebar">
         <Link href="/" className="logo">
           <span className="logo-mark">
-            <SiAirbrake />
+            <Image src="/assets/logo-mark.png" alt="" width={44} height={44} />
           </span>
           <span>Cracked.dev</span>
         </Link>

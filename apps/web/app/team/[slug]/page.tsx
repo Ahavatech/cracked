@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { FiArrowLeft, FiLinkedin, FiTwitter } from 'react-icons/fi'
 import { FaDribbble } from 'react-icons/fa'
@@ -16,7 +17,9 @@ export default async function TeamMemberPage({ params }: { params: { slug: strin
     <PublicLayout>
       <section className="profile-hero">
         <div className="container profile-grid">
-          <div className="profile-avatar" aria-hidden="true" />
+          <div className="profile-avatar">
+            <Image src={member.avatar_url || '/assets/team-avatar.png'} alt={member.name} width={140} height={140} />
+          </div>
           <div>
             <h1 className="section-title">{member.name}</h1>
             <p className="section-copy">{member.role_title}</p>

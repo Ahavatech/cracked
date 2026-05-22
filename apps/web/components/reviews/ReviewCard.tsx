@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FaStar } from 'react-icons/fa'
 import type { Review } from '../../lib/types'
 
@@ -7,7 +8,7 @@ export function ReviewCard({ review, light = false }: { review: Review; light?: 
   return (
     <article className={`review-card ${light ? 'light' : ''}`}>
       <div className="review-author">
-        <div className="review-avatar" aria-hidden="true" />
+        <Image className="review-avatar" src="/assets/review-avatar.png" alt="" width={44} height={44} />
         <div>
           <strong>{review.author_name}</strong>
           <div className="review-company">{review.company || 'Cracked.dev Client'}</div>

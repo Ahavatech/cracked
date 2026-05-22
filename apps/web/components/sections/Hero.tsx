@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { MotionDiv, MotionFade, MotionSection } from '../ui/Motion'
 
@@ -21,9 +22,9 @@ export function Hero() {
       <div className="container">
         <MotionDiv className="hero-eyebrow">
           <span className="avatar-stack" aria-hidden="true">
-            <span className="mini-avatar" />
-            <span className="mini-avatar" />
-            <span className="mini-avatar" />
+            <Image className="mini-avatar" src="/assets/client-avatar-1.png" alt="" width={36} height={36} />
+            <Image className="mini-avatar" src="/assets/client-avatar-2.png" alt="" width={36} height={36} />
+            <Image className="mini-avatar" src="/assets/client-avatar-3.png" alt="" width={36} height={36} />
           </span>
           <span>Proudly Serving 10+ Clients</span>
         </MotionDiv>
@@ -39,15 +40,9 @@ export function Hero() {
           </p>
         </MotionDiv>
         <MotionFade className="hero-panel" ariaLabel={slides[active]}>
+          <Image src="/assets/hero-meeting.png" alt="Cracked.dev strategy meeting" fill priority className="hero-image" />
           {slides.map((slide, index) => (
             <div className={`hero-scene ${active === index ? 'active' : ''}`} key={slide}>
-              <span className="hero-shape one" />
-              <span className="hero-shape two" />
-              <span className="hero-shape three" />
-              <span className="hero-table" />
-              <span className="hero-person hero-person-one" />
-              <span className="hero-person hero-person-two" />
-              <span className="hero-person hero-person-three" />
             </div>
           ))}
         </MotionFade>

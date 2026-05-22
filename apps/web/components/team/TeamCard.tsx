@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { FaDribbble } from 'react-icons/fa'
 import { FiLinkedin, FiTwitter } from 'react-icons/fi'
 import type { TeamMember } from '../../lib/types'
@@ -6,7 +7,15 @@ import type { TeamMember } from '../../lib/types'
 export function TeamCard({ member }: { member: TeamMember }) {
   return (
     <Link className="team-card" href={`/team/${member.slug}`}>
-      <div className="team-avatar" aria-hidden="true" />
+      <div className="team-avatar">
+        <Image
+          src={member.avatar_url || '/assets/team-avatar.png'}
+          alt={member.name}
+          width={250}
+          height={214}
+          className="team-avatar-image"
+        />
+      </div>
       <div className="team-meta">
         <span className="role-pill">+ {member.role_title}</span>
         <div>

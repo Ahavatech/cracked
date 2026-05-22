@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-import { SiAirbrake } from 'react-icons/si'
 import { login } from '../../lib/auth'
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
@@ -42,7 +42,7 @@ export function LoginForm() {
       <Card className="auth-card">
         <Link href="/" className="logo">
           <span className="logo-mark">
-            <SiAirbrake />
+            <Image src="/assets/logo-mark.png" alt="" width={44} height={44} />
           </span>
           <span>Cracked.dev</span>
         </Link>

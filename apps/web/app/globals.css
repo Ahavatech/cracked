@@ -412,6 +412,7 @@ img {
     radial-gradient(circle at 35% 30%, var(--color-surface), transparent 18%),
     linear-gradient(135deg, var(--color-primary), var(--color-accent));
   margin-left: -8px;
+  object-fit: cover;
 }
 
 .mini-avatar:first-child {
@@ -450,6 +451,7 @@ img {
   inset: 0;
   opacity: 0;
   transition: opacity 600ms ease;
+  pointer-events: none;
 }
 
 .hero-scene.active {
@@ -559,6 +561,11 @@ img {
   transform: translateX(-50%);
 }
 
+.about-avatar-image {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
 .avatar-head {
   position: absolute;
   top: 0;
@@ -662,6 +669,16 @@ img {
   background:
     radial-gradient(circle at 48% 22%, color-mix(in srgb, var(--color-warning), var(--color-surface) 28%), transparent 16%),
     linear-gradient(160deg, var(--color-surface), color-mix(in srgb, var(--color-primary), var(--color-surface) 70%));
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+}
+
+.team-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .team-meta {
@@ -737,6 +754,7 @@ img {
   background:
     radial-gradient(circle at 35% 32%, var(--color-surface), transparent 10%),
     linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  object-fit: cover;
 }
 
 .review-company {
@@ -766,15 +784,13 @@ img {
     linear-gradient(135deg, var(--color-dark-soft), var(--color-dark));
 }
 
-.mockup-label {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  color: var(--color-surface);
-  font-family: var(--font-display);
-  font-size: 28px;
-  transform: rotate(-8deg);
-  opacity: 0.92;
+.portfolio-cover-image,
+.hero-image {
+  object-fit: cover;
+}
+
+.hero-image {
+  z-index: 0;
 }
 
 .portfolio-body {
@@ -865,6 +881,16 @@ img {
   background:
     radial-gradient(circle at 48% 28%, color-mix(in srgb, var(--color-warning), var(--color-surface) 24%), transparent 18%),
     linear-gradient(160deg, var(--color-surface), color-mix(in srgb, var(--color-primary), var(--color-surface) 70%));
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .tag-row {
@@ -1202,40 +1228,6 @@ img {
   margin: 0 auto;
   border-radius: 18px;
   z-index: 2;
-}
-
-.hero-table {
-  position: absolute;
-  left: 18%;
-  right: 10%;
-  bottom: 6%;
-  height: 28%;
-  border-radius: var(--radius-btn) var(--radius-btn) 0 0;
-  background: color-mix(in srgb, var(--color-surface), transparent 82%);
-  transform: perspective(500px) rotateX(62deg);
-}
-
-.hero-person {
-  position: absolute;
-  bottom: 18%;
-  width: 92px;
-  height: 132px;
-  border-radius: 48px 48px 18px 18px;
-  background: linear-gradient(180deg, var(--color-surface) 0 28%, color-mix(in srgb, var(--color-primary), var(--color-dark) 35%) 28%);
-  opacity: 0.78;
-}
-
-.hero-person-one {
-  left: 24%;
-}
-
-.hero-person-two {
-  left: 51%;
-  height: 116px;
-}
-
-.hero-person-three {
-  right: 18%;
 }
 
 .dot-row {

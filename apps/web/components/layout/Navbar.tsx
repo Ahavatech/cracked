@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
-import { SiAirbrake } from 'react-icons/si'
 import { clientFetch } from '../../lib/client-api'
 import type { AuthUser } from '../../lib/types'
 import { Button } from '../ui/Button'
@@ -31,7 +31,7 @@ export function Navbar() {
         <div className="navbar-inner">
           <Link href="/" className="logo" aria-label="Cracked.dev home">
             <span className="logo-mark">
-              <SiAirbrake />
+              <Image src="/assets/logo-mark.png" alt="" width={44} height={44} />
             </span>
             <span>Cracked.dev</span>
           </Link>
