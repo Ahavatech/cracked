@@ -4,9 +4,10 @@ import { loadEnv } from '../src/config/env'
 
 async function main() {
   const env = loadEnv(['DATABASE_URL', 'SEED_ADMIN_EMAIL', 'SEED_ADMIN_PASSWORD'])
+  const connectionString = env.DIRECT_URL?.trim() || env.DATABASE_URL
   const client = new Client({
-    connectionString: env.DATABASE_URL,
-    ssl: env.DATABASE_URL?.includes('sslmode=require')
+    connectionString,
+    ssl: connectionString?.includes('sslmode=require')
       ? { rejectUnauthorized: false }
       : undefined
   })

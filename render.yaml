@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: cracked-api
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @cracked/api build
+    startCommand: pnpm --filter @cracked/api start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: WEB_URL
+        sync: false
+      - key: COOKIE_SAMESITE
+        value: none
+      - key: COOKIE_DOMAIN
+        value: ""
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: 465
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SEED_ADMIN_EMAIL
+        value: admin@cracked.dev
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+
+  - type: web
+    name: cracked-web
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @cracked/web build
+    startCommand: pnpm --filter @cracked/web exec next start -p $PORT
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NEXT_PUBLIC_API_URL
+        sync: false

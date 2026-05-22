@@ -58,6 +58,6 @@ app.use((err: unknown, _req: express.Request, res: express.Response, _next: expr
   res.status(500).json({ error: 'Unexpected server error.' })
 })
 
-app.listen(env.port, () => {
+app.listen(env.port, '0.0.0.0', () => {
   console.log(`Cracked.dev API listening on http://localhost:${env.port}`)
 })

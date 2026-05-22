@@ -5,6 +5,7 @@ import { loadEnv } from '../src/config/env'
 
 async function main() {
   const env = loadEnv(['DATABASE_URL'])
+  const connectionString = env.DIRECT_URL?.trim() || env.DATABASE_URL
   const migrationsDir = path.resolve(__dirname, '..', 'src', 'db', 'migrations')
   const files = fs
     .readdirSync(migrationsDir)
@@ -17,8 +18,8 @@ async function main() {
   }
 
   const client = new Client({
-    connectionString: env.DATABASE_URL,
-    ssl: env.DATABASE_URL?.includes('sslmode=require')
+    connectionString,
+    ssl: connectionString?.includes('sslmode=require')
       ? { rejectUnauthorized: false }
       : undefined
   })

@@ -1454,6 +1454,10 @@ img {
   font-weight: 700;
 }
 
+.page-hero {
+  padding-top: 230px;
+}
+
 @media (max-width: 900px) {
   .container {
     width: min(100% - 28px, 1120px);
