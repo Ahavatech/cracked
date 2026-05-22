@@ -95,6 +95,7 @@ export default function AdminMembersPage() {
       </div>
       {status ? <div className="status-message status-success">{status}</div> : null}
       <Card className="admin-panel">
+        <div className="table-wrap">
         <table className="admin-table">
           <thead>
             <tr>
@@ -133,6 +134,7 @@ export default function AdminMembersPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </Card>
       <Modal title={editing ? 'Edit Member' : 'Add Member'} open={modalOpen} onClose={() => setModalOpen(false)}>
         <form className="form-grid" onSubmit={onSubmit}>

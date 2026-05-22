@@ -148,6 +148,7 @@ export default function AdminPortfolioPage() {
       <Card className="admin-panel">
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext items={projects.map((project) => project.id)} strategy={verticalListSortingStrategy}>
+            <div className="table-wrap">
             <table className="admin-table">
               <thead>
                 <tr>
@@ -173,6 +174,7 @@ export default function AdminPortfolioPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </SortableContext>
         </DndContext>
       </Card>

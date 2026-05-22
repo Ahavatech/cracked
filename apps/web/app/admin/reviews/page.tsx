@@ -43,6 +43,7 @@ export default function AdminReviewsPage() {
       </div>
       {status ? <div className="status-message status-success">{status}</div> : null}
       <Card className="admin-panel">
+        <div className="table-wrap">
         <table className="admin-table">
           <thead>
             <tr>
@@ -85,6 +86,7 @@ export default function AdminReviewsPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </Card>
     </>
   )

@@ -54,6 +54,7 @@ export default function AdminDashboardPage() {
       </div>
       <Card className="admin-panel stack-top">
         <h2>Recent Contact Submissions</h2>
+        <div className="table-wrap">
         <table className="admin-table">
           <thead>
             <tr>
@@ -72,6 +73,7 @@ export default function AdminDashboardPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </Card>
     </>
   )

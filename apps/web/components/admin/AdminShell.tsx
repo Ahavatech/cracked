@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+import { FiMenu } from 'react-icons/fi'
 import { logout } from '../../lib/auth'
 
 const links = [
@@ -16,6 +18,7 @@ const links = [
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
+  const [open, setOpen] = useState(false)
 
   async function onLogout() {
     await logout().catch(() => undefined)
@@ -24,7 +27,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="admin-layout">
-      <aside className="admin-sidebar">
+      <aside className={open ? 'admin-sidebar admin-sidebar--open' : 'admin-sidebar'}>
         <Link href="/" className="logo">
           <span className="logo-mark">
             <Image src="/assets/logo-mark.png" alt="" width={44} height={44} />
@@ -33,7 +36,12 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         </Link>
         <nav className="admin-nav">
           {links.map((link) => (
-            <Link className={pathname === link.href ? 'active' : ''} href={link.href} key={link.href}>
+            <Link
+              className={pathname === link.href ? 'active' : ''}
+              href={link.href}
+              key={link.href}
+              onClick={() => setOpen(false)}
+            >
               {link.label}
             </Link>
           ))}
@@ -42,7 +50,19 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </button>
         </nav>
       </aside>
-      <main className="admin-main">{children}</main>
+      {open ? <div className="admin-drawer-backdrop" onClick={() => setOpen(false)} /> : null}
+      <main className="admin-main">
+        <button
+          type="button"
+          className="admin-menu-button"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+        >
+          <FiMenu />
+          Menu
+        </button>
+        {children}
+      </main>
     </div>
   )
 }
